@@ -4,6 +4,7 @@ import { Todo} from "../../model/todo.model";
 import { Observable } from 'rxjs';
 import {MatDialog} from "@angular/material/dialog";
 import {AddTodoDialogComponent} from "./add-todo-dialog/add-todo-dialog.component";
+import {ConfirmDialogComponent} from "./confirm-dialog/confirm-dialog.component";
 
 @Component({
   selector: 'app-todo',
@@ -64,6 +65,21 @@ export class TodoComponent implements OnInit {
 
   deleteTodo(todoId: string | undefined): void {
     this.firebaseService.deleteTodo(todoId);
+  }
+
+  confirmDelete(todoId: string | undefined): void {
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      width: '400px',
+      data: { message: 'Êtes-vous sûr de vouloir supprimer cette tâche ?' }
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this.firebaseService.deleteTodo(todoId).then(() => {
+          console.log('Tâche supprimée.');
+        });
+      }
+    });
   }
 
   toggleCompletion(todo: Todo): void {

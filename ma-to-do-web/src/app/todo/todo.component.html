@@ -17,7 +17,7 @@
         <button mat-button color="primary" (click)="toggleCompletion(todo)">
           {{ todo.completed ? 'Marquer comme non traité' : 'Marquer comme traité' }}
         </button>
-        <button mat-button color="warn" (click)="deleteTodo(todo.id)">Supprimer</button>
+        <button mat-button color="warn" (click)="confirmDelete(todo.id)">Supprimer</button>
       </div>
     </div>
   </div>
