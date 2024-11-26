@@ -11,12 +11,18 @@ import {getFirestore, provideFirestore} from "@angular/fire/firestore";
 import {FormsModule} from "@angular/forms";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AddTodoDialogComponent } from './todo/add-todo-dialog/add-todo-dialog.component';
+import {MatButtonModule} from "@angular/material/button";
+import {MatInputModule} from "@angular/material/input";
+import {MatDialogModule} from "@angular/material/dialog";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import { ConfirmDialogComponent } from './todo/confirm-dialog/confirm-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TodoComponent,
-    AddTodoDialogComponent
+    AddTodoDialogComponent,
+    ConfirmDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -25,7 +31,11 @@ import { AddTodoDialogComponent } from './todo/add-todo-dialog/add-todo-dialog.c
     provideAnalytics(() => getAnalytics()),
     provideFirestore(() => getFirestore()),
     FormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatButtonModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]

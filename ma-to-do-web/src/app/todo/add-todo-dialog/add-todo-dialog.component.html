@@ -1,0 +1,15 @@
+<div class="dialog-content">
+  <h2>Créer une nouvelle tâche</h2>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Nom de la tâche</mat-label>
+    <input matInput [(ngModel)]="taskName" />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Description</mat-label>
+    <textarea matInput [(ngModel)]="taskDescription" rows="3"></textarea>
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" (click)="createTask()">Créer</button>
+</div>

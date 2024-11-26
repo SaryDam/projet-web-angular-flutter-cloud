@@ -1,26 +1,25 @@
 <div class="todo-app">
-  <!-- En-tête -->
-  <h1>My Todo List</h1>
+  <button mat-raised-button color="primary"
+          (click)="openCreateTodoDialog()" class="bouton-ajout">
+    Ajouter une tâche
+  </button>
 
-  <!-- Formulaire pour ajouter une nouvelle tâche -->
-  <div class="todo-form">
-    <input [(ngModel)]="newTodoName" placeholder="Enter new task" />
-    <button (click)="addTodo()">Add</button>
-  </div>
-
-  <!-- Liste des tâches sous forme de cartes -->
-  <div class="todo-card-container">
-    <div class="todo-card" *ngFor="let todo of todos$ | async" [ngClass]="{'completed': todo.completed}">
-      <div class="card-header">
-        <h3>{{ todo.title }}</h3>
-        <p class="timestamp">Created: {{ todo.timestamp | date: 'short' }}</p>
-      </div>
-      <div class="card-actions">
-        <button class="complete" (click)="toggleCompletion(todo)">
-          {{ todo.completed ? 'Undo' : 'Complete' }}
+  <div class="todo-list">
+    <div
+      class="todo-card"
+      *ngFor="let todo of todos$ | async"
+      [class.completed]="todo.completed"
+    >
+      <h3>{{ todo.title }}</h3>
+      <p>{{ todo.description }}</p> <!-- Affiche la description -->
+      <small>Créé le : {{ todo.timestamp | date: 'short' }}</small>
+      <div class="actions">
+        <button mat-button color="primary" (click)="toggleCompletion(todo)">
+          {{ todo.completed ? 'Marquer comme non traité' : 'Marquer comme traité' }}
         </button>
-        <button class="delete" (click)="deleteTodo(todo.id)">Delete</button>
+        <button mat-button color="warn" (click)="deleteTodo(todo.id)">Supprimer</button>
       </div>
     </div>
   </div>
+
 </div>

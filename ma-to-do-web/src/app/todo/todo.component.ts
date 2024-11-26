@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FirebaseService} from "../../service/firebase.service";
 import { Todo} from "../../model/todo.model";
 import { Observable } from 'rxjs';
+import {MatDialog} from "@angular/material/dialog";
+import {AddTodoDialogComponent} from "./add-todo-dialog/add-todo-dialog.component";
 
 @Component({
   selector: 'app-todo',
@@ -12,10 +14,31 @@ export class TodoComponent implements OnInit {
   todos$!: Observable<Todo[]>; // Flux des todos
   newTodoName: string = '';
 
-  constructor(private firebaseService: FirebaseService) {}
+  constructor(private firebaseService: FirebaseService,
+              private dialog: MatDialog,) {}
 
   ngOnInit(): void {
     this.todos$ = this.firebaseService.getTodos();
+  }
+
+  openCreateTodoDialog(): void {
+    const dialogRef = this.dialog.open(AddTodoDialogComponent, {
+      width: '70%',
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        const newTodo: Partial<Todo> = {
+          title: result,
+          completed: false,
+          timestamp: new Date().toISOString(),
+          description: result,
+        };
+        this.firebaseService.addTodo('todos', newTodo).then(() => {
+          console.log('Tâche ajoutée avec succès');
+        });
+      }
+    });
   }
 
   addTodo(): void {
