@@ -17,6 +17,7 @@ import {MatDialogModule} from "@angular/material/dialog";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import { ConfirmDialogComponent } from './todo/confirm-dialog/confirm-dialog.component';
 import { TodoListComponent } from './todo/todo-list/todo-list.component';
+import {MatSnackBar, MatSnackBarModule} from "@angular/material/snack-bar";
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { TodoListComponent } from './todo/todo-list/todo-list.component';
     MatDialogModule,
     MatFormFieldModule,
     MatButtonModule,
-    MatInputModule
+    MatInputModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
