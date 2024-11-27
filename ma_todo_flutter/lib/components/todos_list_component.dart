@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import '../models/todo.dart';
 import 'todo_component.dart';
 
-class TodosList extends StatelessWidget {
+class TodosListComponent extends StatelessWidget {
   final List<Todo> todos;
-  final Function(int) onToggle;
-  final Function(int) onDelete;
+  final Function(Todo) onToggleComplete;
+  final Function(Todo) onDelete;
 
-  TodosList({
+  TodosListComponent({
     required this.todos,
-    required this.onToggle,
+    required this.onToggleComplete,
     required this.onDelete,
   });
 
@@ -20,10 +20,9 @@ class TodosList extends StatelessWidget {
       itemBuilder: (context, index) {
         final todo = todos[index];
         return TodoComponent(
-          title: todo.title,
-          isCompleted: todo.isCompleted,
-          onToggle: () => onToggle(index),
-          onDelete: () => onDelete(index),
+          todo: todo,
+          onToggleComplete: () => onToggleComplete(todo),
+          onDelete: () => onDelete(todo),
         );
       },
     );
