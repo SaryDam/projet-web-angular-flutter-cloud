@@ -11,15 +11,10 @@ import {ConfirmDialogComponent} from "./confirm-dialog/confirm-dialog.component"
   templateUrl: './todo.component.html',
   styleUrls: ['./todo.component.scss']
 })
-export class TodoComponent implements OnInit {
-  todos$!: Observable<Todo[]>; // Flux des todos
+export class TodoComponent{
 
   constructor(private firebaseService: FirebaseService,
               private dialog: MatDialog,) {}
-
-  ngOnInit(): void {
-    this.todos$ = this.firebaseService.getTodos();
-  }
 
   openCreateTodoDialog(): void {
     const dialogRef = this.dialog.open(AddTodoDialogComponent, {

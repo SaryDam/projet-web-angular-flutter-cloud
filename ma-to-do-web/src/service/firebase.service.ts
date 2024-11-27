@@ -11,7 +11,7 @@ import {
   setDoc,
   updateDoc,
 } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
+import {map, Observable} from 'rxjs';
 import { Todo } from '../model/todo.model';
 
 @Injectable({
@@ -36,8 +36,14 @@ export class FirebaseService {
    */
   getTodos(collectionName: string = 'todos'): Observable<Todo[]> {
     const todosCollection = collection(this.firestore, collectionName) as CollectionReference<DocumentData>;
-    return collectionData(todosCollection, { idField: 'id' }) as Observable<Todo[]>;
-  }
+    return collectionData(todosCollection, { idField: 'id' }).pipe(
+      map((todos: DocumentData[]) =>
+        todos.map((todo: any) => ({
+          ...todo,
+          createdAt: todo.createdAt?.toDate ? todo.createdAt.toDate() : todo.createdAt, // Convertir Timestamp en Date
+        }))
+      )
+    ) as Observable<Todo[]>;  }
 
   /**
    * Ajoute un todo à une collection Firestore

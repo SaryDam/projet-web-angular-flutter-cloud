@@ -20,6 +20,7 @@ export class TodoListComponent implements OnInit{
 
   ngOnInit(): void {
     this.todos$ = this.firebaseService.getTodos();
+    console.log(this.todos$)
   }
 
   confirmDelete(todoId: string | undefined): void {
