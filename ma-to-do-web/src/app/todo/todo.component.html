@@ -12,7 +12,7 @@
     >
       <h3>{{ todo.title }}</h3>
       <p>{{ todo.description }}</p> <!-- Affiche la description -->
-      <small>Créé le : {{ todo.timestamp | date: 'short' }}</small>
+      <small>Créé le : {{ todo.createdAt | date: 'short' }}</small>
       <div class="actions">
         <button mat-button color="primary" (click)="toggleCompletion(todo)">
           {{ todo.completed ? 'Marquer comme non traité' : 'Marquer comme traité' }}

@@ -32,7 +32,7 @@ export class TodoComponent implements OnInit {
         const newTodo: Partial<Todo> = {
           title: result,
           completed: false,
-          timestamp: new Date().toISOString(),
+          createdAt: new Date().toISOString(),
           description: result,
         };
         this.firebaseService.addTodo('todos', newTodo).then(() => {
@@ -47,7 +47,7 @@ export class TodoComponent implements OnInit {
       const newTodo: Partial<Todo> = {
         title: this.newTodoName.trim(),
         completed: false,
-        timestamp: new Date().toISOString(),
+        createdAt: new Date().toISOString(),
       };
 
       this.firebaseService.addTodo('todos', newTodo).then(() => {
