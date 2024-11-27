@@ -16,13 +16,15 @@ import {MatInputModule} from "@angular/material/input";
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import { ConfirmDialogComponent } from './todo/confirm-dialog/confirm-dialog.component';
+import { TodoListComponent } from './todo/todo-list/todo-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TodoComponent,
     AddTodoDialogComponent,
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
+    TodoListComponent
   ],
   imports: [
     BrowserModule,

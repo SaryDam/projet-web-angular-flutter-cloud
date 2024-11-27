@@ -20,12 +20,12 @@ export class AddTodoDialogComponent {
     if (this.taskName.trim()) {
       const newTask = {
         title: this.taskName.trim(),
-        description: this.taskDescription.trim(), // Ajouter la description
+        description: this.taskDescription.trim(),
         completed: false,
-        timestamp: new Date().toISOString(),
+        createdAt: new Date(),
       };
       this.firebaseService.addTodo('todos', newTask).then(() => {
-        this.dialogRef.close(); // Fermer la boîte de dialogue
+        this.dialogRef.close();
       });
     }
   }

@@ -1,0 +1,17 @@
+<div class="todo-list">
+  <div
+    class="todo-card"
+    *ngFor="let todo of todos$ | async"
+    [class.completed]="todo.completed"
+  >
+    <h3>{{ todo.title }}</h3>
+    <p>{{ todo.description }}</p> <!-- Affiche la description -->
+    <small>Créé le : {{ todo.createdAt | date: 'short' }}</small>
+    <div class="actions">
+      <button mat-button color="primary" (click)="toggleCompletion(todo)">
+        {{ todo.completed ? 'Marquer comme non traité' : 'Marquer comme traité' }}
+      </button>
+      <button mat-button color="warn" (click)="confirmDelete(todo.id)">Supprimer</button>
+    </div>
+  </div>
+</div>
