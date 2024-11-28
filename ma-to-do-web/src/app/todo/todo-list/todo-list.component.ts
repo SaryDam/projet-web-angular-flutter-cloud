@@ -4,6 +4,7 @@ import {Observable} from "rxjs";
 import {Todo} from "../../../model/todo.model";
 import {ConfirmDialogComponent} from "../confirm-dialog/confirm-dialog.component";
 import {MatDialog} from "@angular/material/dialog";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-todo-list',
@@ -15,7 +16,8 @@ export class TodoListComponent implements OnInit{
   todos$!: Observable<Todo[]>;
 
   constructor(private firebaseService: FirebaseService,
-              private dialog: MatDialog,) {
+              private dialog: MatDialog,
+              private snackBar: MatSnackBar) {
   }
 
   ngOnInit(): void {
@@ -33,13 +35,12 @@ export class TodoListComponent implements OnInit{
       if (result) {
         this.firebaseService.deleteTodo(todoId).then(() => {
           console.log('Tâche supprimée.');
+          this.snackBar.open('tâche supprimée.', 'Fermer', {
+            duration: 3000,
+          });
         });
       }
     });
-  }
-
-  deleteTodo(todoId: string | undefined): void {
-    this.firebaseService.deleteTodo(todoId);
   }
 
   updateTodo(todo: Todo): void {
