@@ -15,23 +15,21 @@
   transition: transform 0.2s, background-color 0.3s ease;
 }
 
-/* Effet hover sur toutes les cartes */
 .todo-card:hover {
   transform: scale(1.02);
 }
 
-/* Styles pour les cartes complétées */
+
 .todo-card.completed {
-  background-color: #d4edda; /* Vert pâle */
-  border: 1px solid #c3e6cb; /* Bordure verte plus foncée */
+  background-color: #d4edda;
+  border: 1px solid #c3e6cb;
 }
 
 .todo-card.completed h3 {
   text-decoration: line-through;
-  color: #155724; /* Vert foncé */
+  color: #155724;
 }
 
-/* En-tête de la carte */
 .card-header h3 {
   font-size: 18px;
   color: #333;
@@ -44,7 +42,10 @@
   margin-top: 5px;
 }
 
-/* Actions de la carte */
+.actions{
+  margin-left: auto;
+}
+
 .card-actions {
   display: flex;
   justify-content: flex-end;

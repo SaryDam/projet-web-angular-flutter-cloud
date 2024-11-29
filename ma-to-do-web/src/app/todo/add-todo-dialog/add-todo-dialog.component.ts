@@ -31,7 +31,7 @@ export class AddTodoDialogComponent {
         this.dialogRef.close();
         this.snackBar.open('Tâche créée avec succès !', 'Fermer', {
           duration: 3000,
-          panelClass: ['success-snackbar'], // Classe CSS optionnelle pour le style
+          panelClass: ['success-snackbar'],
         });
       })
     .catch((error) => {

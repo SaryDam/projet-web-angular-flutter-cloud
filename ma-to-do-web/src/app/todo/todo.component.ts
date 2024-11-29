@@ -34,7 +34,7 @@ export class TodoComponent {
           console.log('Tâche ajoutée avec succès');
           this.snackBar.open('Tâche créée avec succès !', 'Fermer', {
             duration: 3000,
-            panelClass: ['success-snackbar'], // Classe CSS optionnelle pour le style
+            panelClass: ['success-snackbar'],
           });
         });
       }

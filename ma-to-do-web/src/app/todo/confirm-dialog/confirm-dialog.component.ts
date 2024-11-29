@@ -14,10 +14,10 @@ export class ConfirmDialogComponent {
   ) {}
 
   onConfirm(): void {
-    this.dialogRef.close(true); // Retourne true si confirmé
+    this.dialogRef.close(true);
   }
 
   onCancel(): void {
-    this.dialogRef.close(false); // Retourne false si annulé
+    this.dialogRef.close(false);
   }
 }
